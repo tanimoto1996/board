@@ -18,9 +18,16 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-Route::get('/', function() {
-    return view("articles.index");
+// 記事投稿画面
+Route::get('/', "App\Http\Controllers\Article\ArticleController@index")->name('articles.index');
+Route::middleware('auth')->group(function() {
+    Route::get('/create', "App\Http\Controllers\Article\ArticleController@create")->name('articles.create');
+    Route::post('/store', "App\Http\Controllers\Article\ArticleController@store")->name('articles.store');
 });
+
+// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+//                 ->middleware('auth')
+//                 ->name('logout');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

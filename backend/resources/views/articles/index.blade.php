@@ -2,47 +2,41 @@
 
 @section('title', '記事一覧')
 
+@include('layouts.navigation')
 @section('content')
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <div class="pull-right h-75">
-            @if (Route::has('login'))
-            <div class="">
-                @auth
-                <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
 
-                @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                @endif
-                @endauth
-            </div>
-            @endif
-        </div>
-    </a>
-</nav>
 <div class="container">
+    @if(Auth::user())
+    <div class="create-btn-wrap d-flex justify-content-end">
+        <a href="{{ url('/create') }}">
+            <button type="button" class="text-right btn btn-primary mt-3">記事投稿</button>
+        </a>
+    </div>
+    @endif
+
+    @foreach($articles as $article)
     <div class="card mt-3">
         <div class="card-body d-flex flex-row">
             <i class="fas fa-user-circle fa-3x mr-1"></i>
             <div>
                 <div class="font-weight-bold">
-                    ユーザー名
+                    {{ $article->user->name }}
                 </div>
                 <div class="font-weight-lighter">
-                    2020/2/1 12:00
+                    {{ $article->created_at->format('Y/m/d H:i') }}
                 </div>
             </div>
         </div>
         <div class="card-body pt-0 pb-2">
             <h3 class="h4 card-title">
-                記事タイトル
+                {{ $article->title }}
             </h3>
             <div class="card-text">
-                記事本文
+                {{ $article->body }}
             </div>
         </div>
     </div>
+    @endforeach
 </div>
+<script src="{{ asset('js/articles/index.js') }}"></script>
 @endsection
