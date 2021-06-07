@@ -11,7 +11,8 @@ class ArticleController extends Controller
 {
     // 一覧画面の処理
     public function index() {
-        $articles = Article::all()->sortByDesc('created_at');
+        $articles = Article::orderBy('created_at', 'desc')->paginate(5);
+        
         return view("articles.index", ["articles" => $articles]);
     }
 
@@ -26,7 +27,24 @@ class ArticleController extends Controller
         $article->fill($request->all());
         $article->user_id = $request->user()->id;
         $article->save();
+        return redirect()->route("articles.index");
+    }
 
+    // 記事削除
+    public function destroy(Article $article) {
+        $article->delete();
+        return redirect()->route("articles.index");
+    }
+
+    // 記事編集画面に遷移
+    public function edit(Article $article) {
+        return view("articles.edit", ["article" => $article]);
+    }
+
+    // 記事編集
+    public function update(ArticleRequeat $request, Article $article) {
+        $article->fill($request->all());
+        $article->update();
         return redirect()->route("articles.index");
     }
 }

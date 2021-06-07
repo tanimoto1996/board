@@ -1,0 +1,21 @@
+.destroy-form {
+    margin-bottom: 0;
+}
+
+button.destroy-btn {
+    border: none;
+    background: white;
+}
+
+button.destroy-btn:hover {
+    background-color: #f8f9fa;
+}
+
+button.destroy-btn:active {
+    background-color: #757575;
+}
+
+button.destroy-btn:focus {
+    color: white !important;
+    outline: none;
+}

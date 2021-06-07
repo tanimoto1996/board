@@ -23,6 +23,9 @@ Route::get('/', "App\Http\Controllers\Article\ArticleController@index")->name('a
 Route::middleware('auth')->group(function() {
     Route::get('/create', "App\Http\Controllers\Article\ArticleController@create")->name('articles.create');
     Route::post('/store', "App\Http\Controllers\Article\ArticleController@store")->name('articles.store');
+    Route::post('/destroy/{article}', "App\Http\Controllers\Article\ArticleController@destroy")->name('articles.destroy');
+    Route::get('/edit/{article}', "App\Http\Controllers\Article\ArticleController@edit")->name('articles.edit');
+    Route::post('/edit/{article}/update', "App\Http\Controllers\Article\ArticleController@update")->name('articles.update');
 });
 
 // Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
