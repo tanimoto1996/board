@@ -66,8 +66,9 @@
         </div>
     </div>
     @endforeach
-
-    {{ $articles->links() }}
+    <div class="page-wrap">
+        {{ $articles->links() }}
+    </div>
 </div>
 <script src="{{ asset('js/articles/index.js') }}"></script>
 @endsection
