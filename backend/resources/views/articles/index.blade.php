@@ -18,19 +18,19 @@
     @foreach($articles as $article)
     <div class="card mt-3">
         <div class="card-body d-flex flex-row justify-content-between">
-
-            <div class="d-flex">
-                <i class="fas fa-user-circle fa-3x mr-1"></i>
-                <div>
-                    <div class="font-weight-bold">
-                        {{ $article->user->name }}
-                    </div>
-                    <div class="font-weight-lighter">
-                        {{ $article->created_at->format('Y/m/d H:i') }}
+            <a href="{{ route('users.show', ['id' => $article->user_id]) }}">
+                <div class="d-flex">
+                    <i class="fas fa-user-circle fa-3x mr-1"></i>
+                    <div>
+                        <div class="font-weight-bold">
+                            {{ $article->user->name }}
+                        </div>
+                        <div class="font-weight-lighter">
+                            {{ $article->created_at->format('Y/m/d H:i') }}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Default dropright button -->
+            </a>
             @if(Auth::id() === $article->user_id)
             <div class="ml-auto card-text">
                 <div class="dropdown">
@@ -54,7 +54,6 @@
                 </div>
             </div>
             @endif
-
         </div>
         <div class="card-body pt-0 pb-2">
             <h3 class="h4 card-title">

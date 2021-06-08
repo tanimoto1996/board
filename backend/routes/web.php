@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// 記事投稿画面
+// 記事
 Route::get('/', "App\Http\Controllers\Article\ArticleController@index")->name('articles.index');
 Route::middleware('auth')->group(function() {
     Route::get('/create', "App\Http\Controllers\Article\ArticleController@create")->name('articles.create');
@@ -28,12 +24,8 @@ Route::middleware('auth')->group(function() {
     Route::post('/edit/{article}/update', "App\Http\Controllers\Article\ArticleController@update")->name('articles.update');
 });
 
-// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-//                 ->middleware('auth')
-//                 ->name('logout');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+// ユーザー
 require __DIR__.'/auth.php';
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{id}', "App\Http\Controllers\User\UserController@show")->name('show');
+});

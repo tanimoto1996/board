@@ -1,0 +1,41 @@
+.profile-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.article-wrap {
+    width: 800px;
+}
+
+.profile-card i {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.card.profile-card {
+    height: 330px;
+    margin-right: 50px;
+}
+
+.profile-card .card-body {
+    padding-top: 7px;
+}
+
+.profile-card .card-name {
+    border-bottom: 1px solid #eeeeee;
+    font-size: 17px;
+    margin-top: 5px;
+    opacity: .7;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.page-wrap {
+    margin-left: 45%;
+    margin-top: 30px;
+}
+
+.article-wrap .card:first-child {
+    margin-top: 0 !important;
+}
