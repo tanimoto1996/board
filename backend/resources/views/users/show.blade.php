@@ -7,8 +7,32 @@
 <link rel="stylesheet" href="{{ asset('css/users/show.css') }}">
 <div class="profile-wrap">
     <div class="card profile-card" style="width: 18rem;">
-        <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div class="card-body">
+            <div class="ml-auto card-text text-right">
+                @if($id->id === Auth::id())
+                <div class="dropdown">
+                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-link text-muted m-0 p-2">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{{ route('users.edit', ['id' => $id->id]) }}">
+                            <i class="fas fa-pen mr-1"></i>プロフィール編集
+                        </a>
+                    </div>
+                </div>
+                @endif
+            </div>
+            <div class="profile-img">
+                @if(!empty($id->thumbnail))
+                    <img src="/storage/user/{{ $id->thumbnail }}" class="thumbnail">
+                @else
+                    <div class="profile-no-img">
+                        <i class="fas fa-user-circle fa-3x mr-1"></i>
+                    </div>
+                @endif
+            </div>
             <h5 class="card-name">{{ $id->name }}</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>

@@ -4,16 +4,24 @@ namespace App\Http\Controllers\Article;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\User;
 use App\Http\Requests\ArticleRequeat;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     // 一覧画面の処理
-    public function index() {
+    public function index(User $user) {
         $articles = Article::orderBy('created_at', 'desc')->paginate(5);
-        
-        return view("articles.index", ["articles" => $articles]);
+        $users = $user->All();
+
+        // サムネイルの使用可否を配列に代入
+        $usersThumbnailArray = array();
+        foreach ($users as $user) {
+            $usersThumbnailArray[$user['id']] = $user["thumbnail"];
+        }
+
+        return view("articles.index", ["articles" => $articles, "usersThumbnail" => $usersThumbnailArray]);
     }
 
     // 投稿画面に遷移処理

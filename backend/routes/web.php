@@ -28,4 +28,6 @@ Route::middleware('auth')->group(function() {
 require __DIR__.'/auth.php';
 Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{id}', "App\Http\Controllers\User\UserController@show")->name('show');
+    Route::get('/{id}/edit', "App\Http\Controllers\User\UserController@userEdit")->name('edit');
+    Route::post('/{id}/update', "App\Http\Controllers\User\UserController@userUpdate")->name('update');
 });
