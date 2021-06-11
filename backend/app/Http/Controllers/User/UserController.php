@@ -33,10 +33,12 @@ class UserController extends Controller
             $param = [
                 'name'=>$request->name,
                 'thumbnail'=>$thumbnailName,
+                'comment'=>$request->comment
             ];
         } else {
             $param = [
                 'name'=>$request->name,
+                'comment'=>$request->comment,
             ];
         }
 

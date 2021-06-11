@@ -12,13 +12,13 @@
 
     <div class="topWrapper">
         @if(!empty($user->thumbnail))
-            <img src="/storage/user/{{ $user->thumbnail }}" class="editThumbnail">
+        <img src="/storage/user/{{ $user->thumbnail }}" class="editThumbnail">
         @else
         画像なし
         @endif
     </div>
 
-    <form method="post" action="{{ route('users.update', ['id' => $user->id]) }}" enctype="multipart/form-data">
+    <form class="user-edit-form" method="post" action="{{ route('users.update', ['id' => $user->id]) }}" enctype="multipart/form-data">
         @csrf
 
         <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -28,6 +28,12 @@
         <div>
             <input type="text" class="userForm" name="name" placeholder="User" value="{{ $user->name }}">
             @if($errors->has('name'))<div class="error">{{ $errors->first('name') }}</div>@endif
+        </div>
+
+        <div class="labelTitle">Comment</div>
+        <div>
+            <textarea class="userForm" name="comment" placeholder="comment" cols="30" rows="10" maxlength="200">{{ $user->comment }}</textarea>
+            @if($errors->has('comment'))<div class="error">{{ $errors->first('comment') }}</div>@endif
         </div>
 
         <div class="labelTitle">Thumbnail</div>

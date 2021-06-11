@@ -14,7 +14,7 @@
 }
 
 .card.profile-card {
-    height: 330px;
+    min-width: 330px;
     margin-right: 50px;
 }
 
@@ -41,14 +41,14 @@
 }
 
 img.thumbnail {
-    width: 100px;
+    width: 60px;
     height: 60px;
     border-radius: 100%;
 }
 
 .profile-img {
     margin-top: 20px;
-    margin-left: 30%;
+    margin-left: 41%;
 }
 
 a.dropdown-item {

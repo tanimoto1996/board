@@ -31,7 +31,7 @@ input[class="userForm"] {
     width: 100%;
     padding: 5px 0 5px 10px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: solid 2px #e1e3e8;
     transition: 1s;
 }
 input[class="userForm"]:focus {
@@ -51,4 +51,20 @@ input[class="userForm"]:focus {
     font-size: 15px;
     font-weight: 100;
     color: #cc1237;
+}
+
+.user-edit-form textarea {
+    width: 100%;
+    margin: 1em 0;
+    padding: 0.5em;
+    font-size: 1em;
+    border: solid 2px #e1e3e8;
+    border-radius: 4px;
+    resize: none;
+}
+
+/* フォーカス時のスタイル */
+.user-edit-form textarea:focus {
+    border-color: #56a9ff;
+    outline: 0;
 }
