@@ -4,10 +4,10 @@
 
 @include('layouts.navigation')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/users/show.css') }}">
+<link rel="stylesheet" href="{{ asset('css/users/edit.css') }}">
 <div class="container">
     @if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
+    <div class="alert alert-success mt-2">{{ session('success') }}</div>
     @endif
 
     <div class="topWrapper">

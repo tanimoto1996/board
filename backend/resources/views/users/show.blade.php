@@ -26,11 +26,11 @@
             </div>
             <div class="profile-img">
                 @if(!empty($id->thumbnail))
-                    <img src="/storage/user/{{ $id->thumbnail }}" class="thumbnail">
+                <img src="/storage/user/{{ $id->thumbnail }}" class="thumbnail">
                 @else
-                    <div class="profile-no-img">
-                        <i class="fas fa-user-circle fa-3x mr-1"></i>
-                    </div>
+                <div class="profile-no-img">
+                    <i class="fas fa-user-circle fa-3x mr-1"></i>
+                </div>
                 @endif
             </div>
             <h5 class="card-name">{{ $id->name }}</h5>
@@ -43,7 +43,13 @@
             <div class="card-body d-flex flex-row justify-content-between">
                 <a href="{{ route('users.show', ['id' => $article->user_id]) }}">
                     <div class="d-flex">
-                        <i class="fas fa-user-circle fa-3x mr-1"></i>
+                        @if(!empty($id->thumbnail))
+                        <img src="/storage/user/{{ $id->thumbnail }}" class="thumbnail">
+                        @else
+                        <div class="profile-no-img">
+                            <i class="fas fa-user-circle fa-3x mr-1"></i>
+                        </div>
+                        @endif
                         <div>
                             <div class="font-weight-bold user-name">
                                 {{ $article->user->name }}
